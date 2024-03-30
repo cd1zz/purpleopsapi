@@ -11,8 +11,10 @@ servers:
 paths:
   /:
     post:
-      operationId: postAction
-      summary: Perform an action with optional keyword
+      summary: Perform an action with the Purple Ops API
+      operationId: performAction
+      tags:
+        - Purple Ops
       requestBody:
         required: true
         content:
@@ -22,19 +24,16 @@ paths:
               properties:
                 auth_token:
                   type: string
-                  example: "User_Supplied_Auth_Token_Here"
-                  description: "Authentication token to be provided by the user."
+                  description: "Authentication token for API access."
+                  example: "00000000-0000-0000-0000-000000000000"
                 action:
                   type: string
-                  enum: [getDemo, getLast, getGroup, getKeyword]
-                  description: The action to perform
+                  example: "getLast"
+                  description: "Action to perform. Options are 'getDemo', 'getLast', 'getGroup', 'getKeyword'."
                 keyword:
                   type: string
-                  nullable: true
-                  description: The keyword for the getKeyword action. Required if action is getKeyword.
+                  example: "exampleKeyword"
+                  description: "Optional keyword for the 'getKeyword' action."
               required:
                 - auth_token
                 - action
-      responses:
-        "200":
-          description: OK
