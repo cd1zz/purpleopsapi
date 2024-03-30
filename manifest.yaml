@@ -1,0 +1,9 @@
+Descriptor:
+  Name: Purple Ops API
+  DisplayName: Purple Ops API Operations
+  Description: Interact with the Purple Ops API for various operations including demo retrieval, last item access, group information, and specific keyword searches.
+
+SkillGroups:
+  - Format: API
+    Settings:
+      OpenApiSpecUrl: https://raw.githubusercontent.com/cd1zz/purpleopsapi/main/purpleopsapi.yaml
