@@ -1,0 +1,40 @@
+openapi: 3.0.0
+
+info:
+  title: Purple Ops API
+  description: Interact with the Purple Ops API for various operations.
+  version: "1.0.0"
+
+servers:
+  - url: https://api.purple-ops.io/v1
+
+paths:
+  /:
+    post:
+      operationId: postAction
+      summary: Perform an action with optional keyword
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                auth_token:
+                  type: string
+                  example: "User_Supplied_Auth_Token_Here"
+                  description: "Authentication token to be provided by the user."
+                action:
+                  type: string
+                  enum: [getDemo, getLast, getGroup, getKeyword]
+                  description: The action to perform
+                keyword:
+                  type: string
+                  nullable: true
+                  description: The keyword for the getKeyword action. Required if action is getKeyword.
+              required:
+                - auth_token
+                - action
+      responses:
+        "200":
+          description: OK
