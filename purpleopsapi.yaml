@@ -25,7 +25,7 @@ paths:
                 auth_token:
                   type: string
                   description: "Authentication token for API access."
-                  example: "15310879-1C74-411A-910C-EE8296329DE6"
+                  example: ""
                 action:
                   type: string
                   example: "getLast"
