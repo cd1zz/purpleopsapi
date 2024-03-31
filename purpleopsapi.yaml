@@ -25,7 +25,7 @@ paths:
                 auth_token:
                   type: string
                   description: "Authentication token for API access."
-                  example: "00000000-0000-0000-0000-000000000000"
+                  example: ""
                 action:
                   type: string
                   example: "getLast"
@@ -37,3 +37,15 @@ paths:
               required:
                 - auth_token
                 - action
+responses:
+  '200':
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            success:
+              type: boolean
+            data:
+              type: string
