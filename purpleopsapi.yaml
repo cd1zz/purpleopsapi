@@ -1,10 +1,16 @@
+openapi: 3.0.0
+info:
+  title: Purple Ops API
+  version: '1.0'
+servers:
+  - url: https://api.purple-ops.io/v1
 paths:
   /:
     post:
-      summary: "Perform an action with the Purple Ops API"
-      operationId: performAction
+      summary: Execute an action call
+      operationId: executeAction
       tags:
-        - Purple Ops
+        - Actions
       requestBody:
         required: true
         content:
@@ -14,57 +20,42 @@ paths:
               properties:
                 auth_token:
                   type: string
-                  description: "Authentication token for API access."
-                  example: ""
+                  description: Authentication token for API access.
                 action:
                   type: string
-                  description: "Action to perform. Options are 'getDemo', 'getLast', 'getGroup', 'getKeyword'."
-                  example: "getLast"
+                  description: Action to be performed.
+                  enum: [getDemo, getLast, getGroup, getKeyword]
                 keyword:
                   type: string
-                  description: "Optional keyword for the 'getKeyword' action."
-                  example: "exampleKeyword"
-              required:
-                - auth_token
-                - action
+                  description: Optional keyword for custom search. Required if action is `getKeyword`.
       responses:
         '200':
-          description: "Operation successfully executed"
+          description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SuccessResponse'
-        '400':
-          description: "Invalid request"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '401':
-          description: "Unauthorized access"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: "Internal server error"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Victim_Name:
+                          type: string
+                        Additional_Info:
+                          type: string
+                        Dates:
+                          type: string
+                          format: date-time
+                        Group_Name:
+                          type: string
+      security:
+        - ApiKeyAuth: []
+
 components:
-  schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: auth_token
