@@ -1,17 +1,13 @@
 openapi: 3.0.0
-
 info:
   title: Purple Ops API
-  description: Interact with the Purple Ops API for various operations.
-  version: "1.0.0"
-
+  version: "1.0"
 servers:
   - url: https://api.purple-ops.io/v1
-
 paths:
   /:
     post:
-      summary: Perform an action with the Purple Ops API
+      summary: Perform an action with optional keyword
       operationId: performAction
       tags:
         - Purple Ops
@@ -22,34 +18,25 @@ paths:
             schema:
               type: object
               properties:
-                auth_token:
-                  type: string
-                  description: "Authentication token for API access."
-                  example: ""
                 action:
                   type: string
-                  example: "getLast"
-                  description: "Action to perform. Options are 'getDemo', 'getLast', 'getGroup', 'getKeyword'."
+                  enum: [getDemo, getLast, getGroup, getKeyword]
                 keyword:
                   type: string
-                  example: "exampleKeyword"
-                  description: "Optional keyword for the 'getKeyword' action."
               required:
-                - auth_token
                 - action
       responses:
         '200':
           description: Successful operation
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
+                type: string
+      security:
+        - ApiKeyAuth: []
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-test-api-key
