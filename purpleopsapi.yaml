@@ -1,13 +1,7 @@
-openapi: 3.0.0
-info:
-  title: Purple Ops API
-  version: "1.0"
-servers:
-  - url: https://api.purple-ops.io/v1
 paths:
   /:
     post:
-      summary: Perform an action with optional keyword
+      summary: "Perform an action with the Purple Ops API"
       operationId: performAction
       tags:
         - Purple Ops
@@ -18,25 +12,59 @@ paths:
             schema:
               type: object
               properties:
+                auth_token:
+                  type: string
+                  description: "Authentication token for API access."
+                  example: ""
                 action:
                   type: string
-                  enum: [getDemo, getLast, getGroup, getKeyword]
+                  description: "Action to perform. Options are 'getDemo', 'getLast', 'getGroup', 'getKeyword'."
+                  example: "getLast"
                 keyword:
                   type: string
+                  description: "Optional keyword for the 'getKeyword' action."
+                  example: "exampleKeyword"
               required:
+                - auth_token
                 - action
       responses:
         '200':
-          description: Successful operation
+          description: "Operation successfully executed"
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-      security:
-        - ApiKeyAuth: []
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: "Invalid request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: "Unauthorized access"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: x-test-api-key
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
