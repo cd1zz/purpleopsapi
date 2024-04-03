@@ -18,6 +18,9 @@ paths:
             schema:
               type: object
               properties:
+                auth_token:
+                  type: string
+                  description: Authentication token for PurpleOps API access, setup during intial config.
                 action:
                   type: string
                   description: Action to be performed -> getDemo, getLast, getGroup, or getKeyword. getDemo is for troubleshooting and uses dummy data.
@@ -29,11 +32,9 @@ paths:
                   type: string
                   description: Required if action is getKeyword. Keyword can be a company, etc.
                   default: ""
-                auth_token:
-                  type: string
-                  description: Authentication token for PurpleOps API access, setup during intial config.
               required:
                 - action
+                - auth_token
       responses:
         '200':
           description: Success
