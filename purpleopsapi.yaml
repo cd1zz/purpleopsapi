@@ -23,11 +23,7 @@ paths:
                   description: Authentication token for API access.
                 action:
                   type: string
-                  description: Action to be performed.
-                  enum: [getDemo, getLast, getGroup, getKeyword]
-                keyword:
-                  type: string
-                  description: Optional keyword for custom search. Required if action is `getKeyword`.
+                  description: Action to be performed: getDemo, getLast, getGroup.
               required:
                 - auth_token
                 - action
