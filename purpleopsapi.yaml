@@ -20,7 +20,8 @@ paths:
               properties:
                 auth_token:
                   type: string
-                  description: Authentication token for PurpleOps API access. Override global key setting here.
+                  description: Authentication token for PurpleOps API access.
+                  default: auth_token
                 action:
                   type: string
                   description: Action to be performed -> getDemo, getLast, getGroup, or getKeyword. getDemo is for troubleshooting and uses dummy data.
@@ -33,6 +34,7 @@ paths:
                   description: Required if action is getKeyword. Keyword can be a company, etc.
                   default: ""
               required:
+                - auth_token
                 - action
       responses:
         '200':
