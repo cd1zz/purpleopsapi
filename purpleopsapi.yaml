@@ -50,12 +50,3 @@ paths:
                           format: date-time
                         Group_Name:
                           type: string
-      security:
-        - ApiKeyAuth: []
-
-components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: query
-      name: auth_token
