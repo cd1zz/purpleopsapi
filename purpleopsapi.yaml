@@ -7,7 +7,7 @@ servers:
 paths:
   /:
     post:
-      summary: Execute an action call
+      summary: Perform an API call on PurpleOps API
       operationId: purpleOpsApiCall
       tags:
         - Actions
@@ -21,10 +21,12 @@ paths:
                 auth_token:
                   type: string
                   description: Authentication token for API access.
+                  required: true
                 action:
                   type: string
                   description: Action to be performed.
                   enum: [getDemo, getLast, getGroup, getKeyword]
+                  required: true
                 keyword:
                   type: string
                   description: Optional keyword for custom search. Required if action is `getKeyword`.
@@ -50,3 +52,13 @@ paths:
                           format: date-time
                         Group_Name:
                           type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The requested action could not be found.
