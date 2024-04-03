@@ -23,13 +23,13 @@ paths:
                   description: Authentication token for API access.
                 action:
                   type: string
-                  description: Action to be performed -> getDemo, getLast, getGroup, getKeyword.
+                  description: Action to be performed -> getDemo, getLast, getGroup.
                 groupName:
                   type: string
-                  description: Required if action = getGroup. Threat group to search for.
+                  description: Required if action is getGroup. Threat group to search for.
                 keyword:
                   type: string
-                  description: Required if action = getKeyword. Keyword can be a company, etc.
+                  description: Required if action is getKeyword. Keyword can be a company, etc.
               required:
                 - auth_token
                 - action
