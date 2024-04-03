@@ -23,7 +23,7 @@ paths:
                   description: Authentication token for API access.
                 action:
                   type: string
-                  description: Action to be performed -> getDemo, getLast, getGroup.
+                  description: Action to be performed -> getDemo, getLast, getGroup, or getKeyword. getDemo is for troubleshooting and uses dummy data.
                 groupName:
                   type: string
                   description: Required if action is getGroup. Threat group to search for.
