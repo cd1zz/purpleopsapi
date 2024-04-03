@@ -23,7 +23,7 @@ paths:
                   description: Authentication token for API access.
                 action:
                   type: string
-                  description: Action to be performed: getDemo, getLast, getGroup.
+                  description: Action to be performed -> getDemo, getLast, getGroup.
               required:
                 - auth_token
                 - action
