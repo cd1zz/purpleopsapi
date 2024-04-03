@@ -8,7 +8,7 @@ paths:
   /:
     post:
       summary: Execute an action call
-      operationId: executeAction
+      operationId: purpleOpsApiCall
       tags:
         - Actions
       requestBody:
