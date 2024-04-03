@@ -34,7 +34,6 @@ paths:
                   description: Required if action is getKeyword. Keyword can be a company, etc.
                   default: ""
               required:
-                - auth_token
                 - action
       responses:
         '200':
