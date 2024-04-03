@@ -7,7 +7,7 @@ servers:
 paths:
   /v1:
     post:
-      summary: Execute an action call
+      summary: Search PurpleOps ransomware API.
       operationId: purpleOpsApiCall
       tags:
         - Actions
@@ -26,7 +26,10 @@ paths:
                   description: Action to be performed -> getDemo, getLast, getGroup.
                 groupName:
                   type: string
-                  description: Name of the group. Required if the action is `getGroup`.
+                  description: Required if action = getGroup. Threat group to search for.
+                keyword:
+                  type: string
+                  description: Required if action = getKeyword. Keyword can be a company, etc.
               required:
                 - auth_token
                 - action
