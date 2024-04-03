@@ -21,6 +21,7 @@ paths:
                 auth_token:
                   type: string
                   description: Authentication token for PurpleOps API access.
+                  value: {auth_token}
                 action:
                   type: string
                   description: Action to be performed -> getDemo, getLast, getGroup, or getKeyword. getDemo is for troubleshooting and uses dummy data.
