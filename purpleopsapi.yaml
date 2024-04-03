@@ -5,9 +5,9 @@ info:
 servers:
   - url: https://api.purple-ops.io/v1
 paths:
-  /:
+  :
     post:
-      summary: Perform an API call on PurpleOps API
+      summary: Execute an action call
       operationId: purpleOpsApiCall
       tags:
         - Actions
