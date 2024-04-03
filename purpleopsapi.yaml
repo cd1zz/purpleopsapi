@@ -24,6 +24,9 @@ paths:
                 action:
                   type: string
                   description: Action to be performed -> getDemo, getLast, getGroup.
+                groupName:
+                  type: string
+                  description: Name of the group. Required if the action is `getGroup`.
               required:
                 - auth_token
                 - action
