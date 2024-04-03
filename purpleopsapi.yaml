@@ -20,7 +20,7 @@ paths:
               properties:
                 auth_token:
                   type: string
-                  description: Authentication token for PurpleOps API access.
+                  description: Authentication token for PurpleOps API access, setup during intial config.
                   default: {auth_token}
                 action:
                   type: string
