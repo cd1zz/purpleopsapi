@@ -3,9 +3,9 @@ info:
   title: Purple Ops API
   version: '1.0'
 servers:
-  - url: https://api.purple-ops.io/v1
+  - url: https://api.purple-ops.io
 paths:
-  :
+  /v1:
     post:
       summary: Execute an action call
       operationId: purpleOpsApiCall
@@ -21,15 +21,16 @@ paths:
                 auth_token:
                   type: string
                   description: Authentication token for API access.
-                  required: true
                 action:
                   type: string
                   description: Action to be performed.
                   enum: [getDemo, getLast, getGroup, getKeyword]
-                  required: true
                 keyword:
                   type: string
                   description: Optional keyword for custom search. Required if action is `getKeyword`.
+              required:
+                - auth_token
+                - action
       responses:
         '200':
           description: Success
