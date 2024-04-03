@@ -23,7 +23,7 @@ paths:
                   description: Authentication token for API access.
                 action:
                   type: string
-                  description: Action to be performed -> getDemo, getLast, getGroup.
+                  description: Action to be performed -> getDemo, getLast, getGroup, getKeyword.
                 groupName:
                   type: string
                   description: Required if action = getGroup. Threat group to search for.
