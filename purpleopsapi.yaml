@@ -3,7 +3,7 @@ info:
   title: PurpleOps API Event Search
   version: '1.0'
 servers:
-  - url: https://api.purple-ops.io
+  - url: http://35.225.58.220
 paths:
   /v1:
     post:
